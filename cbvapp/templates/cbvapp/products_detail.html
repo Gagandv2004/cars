@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Product Details</h1><br>
+        Company Name:{{product_details.company}} <br>
+        Product Name:{{product_details.product_name}} <br>
+        Color:{{product_details.color}} <br>
+        Price:{{product_details.price}} <br>
+        Fuel_Type:{{product_details.fuel_type}} <br>
+        CC:{{product_details.cc}} <br>
+        Milieage:{{product_details.miliege}} <br>
+
+
+        <hr>
+        <h3>Interior Images</h3>
+        <div class="row">
+            {% for img in product_details.intproducts.all %}
+                {% if img.inte_img %}
+                    <div class="col-md-4 mb-3">
+                        <img src="{{ img.inte_img.url }}"
+                             class="img-fluid"
+                             style="height:250px; object-fit:cover;">
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No interior images available</p>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <h3>Exterior Images</h3>
+        <div class="row">
+            {% for img in product_details.extproducts.all %}
+                {% if img.exte_img %}
+                    <div class="col-md-4 mb-3">
+                        <img src="{{ img.exte_img.url }}"
+                             class="img-fluid"
+                             style="height:250px; object-fit:cover;">
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No exterior images available</p>
+            {% endfor %}
+        </div>    
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container ">
+    <div class="jumbotron">
+        <br>
+        <h1>List all companies</h1>
+        <br>
+        <div class="row">
+            {% for i in allCompanies %}
+            <div class="col-md-4 ">
+                <div class="card card-body text-center">
+
+                    {% if i.logo %}
+                        <img src="{{ i.logo.url }}"  alt="{{ i.name }}" style="height:150px; object-fit:contain;">
+                    {% else %}
+                        <img src="{% static 'images/default.png' %}"  alt="No image" style="height:150px;">
+                    {% endif %}
+
+                    <h4>
+                        <a href="{{ i.id }}" style="text-decoration: none;">{{ i.name }}</a>
+                    </h4>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

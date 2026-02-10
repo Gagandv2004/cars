@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>{{company_details.name}} Company Details</h1>
+        <p>CEO:{{ company_details.CEO }}</p>
+        <p>EST_YEAR : {{ company_details.est_year }}</p>
+        <p>ORIGIN: {{ company_details.origin }}</p>
+        <a class="btn btn-info" href="{% url 'edit' pk=company_details.id %}">EDIT</a>
+        <a class="btn btn-danger" href="{% url 'delete' pk=company_details.id %}">DELETE</a>
+        <hr>
+        <h1>List of {{ company_details.name }} Products</h1>
+        
+        <div class="row">
+            {% for prod in company_details.companies.all %}
+            <div class="col-md-6">
+                <div class="card card-body">
+                    {% if prod.prod_img %}
+                        <img src="{{ prod.prod_img.url }}" alt="no img" style="height:450px; object-fit:contain;">
+                    {% endif %}
+                    <a href="{% url 'product' pk=prod.id %}"><h4 style="text-align: center;">{{ prod.product_name }}</h4></a>
+                    <p style="text-align: center;">{{prod.color}}</p>
+                    <a href="{% url 'emi' id=prod.id %}"><h2>ℹ️</h2></a>
+
+                </div>
+            </div>
+                
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

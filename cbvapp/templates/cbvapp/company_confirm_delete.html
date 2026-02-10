@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Do You want to delete {{ company.name }}</h2>
+        <form  method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="DELETE">
+        </form>
+        <a href="#">cancle</a>
+    </div>
+</div>
+
+{% endblock %}
