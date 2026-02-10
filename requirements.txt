@@ -1,7 +1,5 @@
 Django>=4.2
 gunicorn
-<<<<<<< HEAD
+HEAD
 whitenoise
-=======
-whitenoise
->>>>>>> 639d487f77bec5092f0c21008ff4957a43ff6bdd
+
